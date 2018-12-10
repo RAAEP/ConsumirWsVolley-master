@@ -19,6 +19,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+
 
 public class Inicio extends AppCompatActivity implements View.OnClickListener {
 
@@ -53,9 +55,18 @@ public class Inicio extends AppCompatActivity implements View.OnClickListener {
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
+                            String str =" ";
                             // Display the first 500 characters of the response string.
-                            edtRespuesta.setText("La respuesta es: " + response);
-                            respuestaServidor = response;
+                            try {
+                                //Codigo para poder dar formato utf8 al json
+                                str = new String(response.getBytes("ISO-8859-1"), "UTF-8");
+
+                                edtRespuesta.setText("La respuesta es: " + str);
+                                respuestaServidor = str;
+                            } catch (UnsupportedEncodingException e) {
+                                e.printStackTrace();
+                            }
+
                         }
                     },
                     new Response.ErrorListener() {
@@ -87,7 +98,7 @@ public class Inicio extends AppCompatActivity implements View.OnClickListener {
                     String codigo = c.getString("Código");
                     String nombre = c.getString("Nombre");
                     String direccion = c.getString("Dirección");
-                    String foto = c.getString("Foto");
+                    String foto = c.getString("Foto 1");
 
                     //¿Qué hacer con cada valor de los atributos?
                     edtRespuesta.setText(edtRespuesta.getText() + "\nCódigo: " + codigo

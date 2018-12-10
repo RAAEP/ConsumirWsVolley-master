@@ -53,6 +53,7 @@
         android:ems="10"
         android:inputType="textMultiLine"
         android:singleLine="false"
+        android:text='[ 	{ 		"Código":"2276", 		"Nombre":"AGUILAS", 		"Dirección":"Los Geráneos","Foto 1":"http://www.murciaturistica.es/webs/murciaturistica/fotos/1/alojamientos/etu00054420012_g.jpg"}]'
         app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:layout_editor_absoluteX="19dp" />
 
